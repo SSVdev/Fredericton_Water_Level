@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Smart Water Level</title>
+    <!-- Favicon -->
+    <!-- <link rel="icon" href="http://icons.iconarchive.com/icons/bokehlicia/captiva/128/rocket-icon.png" type="image/x-icon" /> -->
+    <link rel="icon" href="https://icons.iconarchive.com/icons/jommans/briefness/128/File-System-icon.png" type="image/x-icon" />
+    <!-- Bootstrap Core CSS -->
+    <link href="base/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="base/css/custom.css" rel="stylesheet">
+    <link href="base/css/guages.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Slider -->
+    <link href="base/css/slider/freshslider.min.css" rel="stylesheet">
+    <!-- getAPI Funtion -->
+    <script src="GetAPI/getAPI.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand pull-left " href="#" id="menu-toggle"><span class="glyphicon glyphicon-chevron-left soft-white"></span></a>
+                <a class="navbar-brand pull-left" id='space' href="#">STAY ONLINE</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="https://vi.maplesmartcontrol1.com" target="_blank">Maple Smart Control</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>&nbsp; Administrator <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Logout</a></li>
+                    <!-- <li><button onclick="GetAPI()">getAPI</button></li> -->
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <div class="user-panel">
+            <div class="image pull-left">
+                <a href=""><img src="base/img/Logomsc.png" class="img-circle" alt="User Image"></a>
+            </div>
+            <div class="slogan pull-right">
+                <h3 class="pull-left" style="color:rgb(18, 205, 230);">Maple Smart Control</h3>
+                <br>
+                <!-- <h5 class="pull-left" style="color:rgb(18, 205, 230);">Monitoring Systems</h5> -->
+            </div>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li>
+                <h3>NAVIGATION</h3>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-blackboard"></span>&nbsp; Dashboard</a>
+            </li>
+            <li id="active">
+                <!-- <a href="#"><span class="glyphicon glyphicon-scale"></span>&nbsp; Temperature</a> -->
+                <a href="#"><span class="glyphicon glyphicon-blackboard"></span>&nbsp; Temperature</a>
+            </li>
+            <li id="active">
+                <a href="#"><span class="glyphicon glyphicon-scale"></span>&nbsp; Humidity</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-sort"></span>&nbsp; Switches</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-tint"></span>&nbsp; Wather</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp; To Do List</a>
+            </li>
+            <li>
+                <h3>CONFIGURATION</h3>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-cd"></span>&nbsp; Database</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-list"></span>&nbsp; Tables</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-dashboard"></span>&nbsp; Sensors</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp; Users</a>
+            </li>
+            <li>
+                <h3>DOCUMENTATION</h3>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-book"></span>&nbsp; Documentation</a>
+            </li>
+            <li>
+                <!-- <a href="#"><span class="glyphicon glyphicon-book"></span>&nbsp; Documentation</a> -->
+            </li>            
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="content-header">
+                        <h1>
+                            Dashboard <br />
+                            Smart Water Level
+                            <small>Short Statistic</small>
+                        </h1>
+                    </section>
+                </div>
+            </div>
+            <hr class="style-four">
+            <div class="row">            
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-purple"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></span>
+                <div class="info-box-content">
+                  <span class="info-box-text text-muted">Tasks</span>
+                  <span class="info-box-number">5</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></span>
+                <div class="info-box-content">
+                  <span class="info-box-text text-muted">Sensors</span>
+                  <span class="info-box-number">410</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-orange"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></span>
+                <div class="info-box-content">
+                  <span class="info-box-text text-muted">Logs</span>
+                  <span class="info-box-number">13,648</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></span>
+                <div class="info-box-content">
+                  <span class="info-box-text text-muted">Warnings</span>
+                  <span class="info-box-number">93,139</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+                        
+            <hr class="style-four">            
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <div id="g1" class="gauge float-right"></div>
+                        </div>
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <h4>Details<small class="pull-right"> Statistic</small></h4>
+                            <table class="table table-condensed">
+                                <tbody>
+                                  <tr>
+                                    <td>Name:</td>
+                                    <td>Sensus1 18c</td>
+                                    <td>Type Climate</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Temperature:</td>
+                                    <td id="m1_temp"></td>
+                                    <td>oC</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Time:</td>
+                                    <td id="m1_time"></td>
+                                    <td>date</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Note:</td>
+                                    <td>NaN</td>
+                                    <td>No Data Yet</td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                            
+                            <a href="#" id="g1_refresh" class="btn btn-success btn-sm pull-right">Refresh</a>
+                            <!-- <a href="#" class="btn btn-success btn-sm pull-right">Show Statistic</a> -->
+                                                        
+                            <script> 
+                                function callbackAPI1() {
+                                    var data = Get_API_Water();
+                                    var g1 = new JustGage({
+                                        id: "g1",
+                                        title: "Sensus1 18c",
+                                        value: data.meter0,
+                                        min: 0,
+                                        max: 100000,
+                                        decimals: 0,
+                                        gaugeWidthScale: 0.6
+                                    });        
+                                };
+                                document.addEventListener("DOMContentLoaded", function(event) {
+                                    var data = Get_API_Water();
+                                    //setInterval(meter,10000);
+                                    var g1 = new JustGage({
+                                        id: "g1",
+                                        title: "Sensus1 18c",
+                                        value: data.meter0,
+                                        min: 0,
+                                        max: 100000,
+                                        decimals: 0,
+                                        gaugeWidthScale: 0.6
+                                    });
+                                    
+                                    document.getElementById('m1_temp').innerHTML = data.temp0;
+                                    document.getElementById('m1_time').innerHTML = data.time0;
+                                    document.getElementById('m1_meter_table').innerHTML = data.meter0;
+                                    document.getElementById('m1_temp_table').innerHTML = data.temp0;
+                                    document.getElementById('m1_time_table').innerHTML = data.time0;
+                                    document.getElementById('g1_refresh').addEventListener('click', function() {
+                                        //g1.refresh(getRandomInt(-10, 100));
+                                        g1.refresh(callbackAPI1());
+                                    });                     
+                                });
+                            </script>
+                        </div>     
+                    </div>
+                </div>
+            </div>
+
+            <hr class="style-four">
+
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <div id="g2" class="gauge float-right"></div>
+                        </div>
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <h4>Details<small class="pull-right"> Statistic</small></h4>
+                            <table class="table table-condensed">
+                                <tbody>
+                                  <tr>
+                                    <td>Name:</td>
+                                    <td>Sensus1 024</td>
+                                    <td>Type Climate</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Temperature:</td>
+                                    <td id="m2_temp"></td>
+                                    <td>oC</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Time:</td>
+                                    <td id="m2_time"></td>
+                                    <td>date</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Note:</td>
+                                    <td>NaN</td>
+                                    <td>No Data Yet</td>
+                                   </tr> 
+                                </tbody>
+                            </table>
+                            
+                            <a href="#" id="g2_refresh" class="btn btn-default btn-sm pull-right">Refresh</a>
+                            
+                            <script>
+                                function callbackAPI2() {
+                                    var data = Get_API_Water();
+                                    var g1 = new JustGage({
+                                        id: "g2",
+                                        title: "Sensus1 024",
+                                        value: data.meter1,
+                                        min: 0,
+                                        max: 100000,
+                                        decimals: 0,
+                                        gaugeWidthScale: 0.6
+                                    });        
+                                };
+                                document.addEventListener("DOMContentLoaded", function(event) {
+                                    var data = Get_API_Water();
+                                    var g2 = new JustGage({
+                                        id: "g2",
+                                        title: "Sensus1 024",
+                                        value: data.meter1,
+                                        min: 0,
+                                        max: 100000,
+                                        decimals: 0,
+                                        gaugeWidthScale: 0.6
+                                    });
+                                    document.getElementById('m2_temp').innerHTML = data.temp1;
+                                    document.getElementById('m2_time').innerHTML = data.time1;
+                                    document.getElementById('m2_meter_table').innerHTML = data.meter1;
+                                    document.getElementById('m2_temp_table').innerHTML = data.temp1;
+                                    document.getElementById('m2_time_table').innerHTML = data.time1;
+                                    document.getElementById('g2_refresh').addEventListener('click', function() {
+                                        //g2.refresh(getRandomInt(-10, 120));
+                                        g2.refresh(callbackAPI2());
+                                    });                       
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="style-four">
+
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <div id="g3" class="gauge float-right"></div>
+                        </div>
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <h4>Details<small class="pull-right"> Statistic</small></h4>
+                            <table class="table table-condensed">
+                                <tbody>
+                                  <tr>
+                                    <td>Name:</td>
+                                    <td>Sensus1 024</td>
+                                    <td>Type Climate</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Temperature:</td>
+                                    <td id="m3_temp"></td>
+                                    <td>oC</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Time:</td>
+                                    <td id="m3_time"></td>
+                                    <td>date</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Note:</td>
+                                    <td>NaN</td>
+                                    <td>No Data Yet</td>
+                                   </tr> 
+                                </tbody>
+                            </table>
+                            
+                            <a href="#" id="g3_refresh" class="btn btn-success btn-sm pull-right">Refresh</a>
+                            <!-- <a href="#" class="btn btn-success btn-sm pull-right">Show Statistic</a> -->
+                            
+                            
+                            
+                            <script>
+                                function callbackAPI3() {
+                                    var data = Get_API_Water();
+                                    var g1 = new JustGage({
+                                        id: "g3",
+                                        title: "Sensus1 035",
+                                        value: data.meter2,
+                                        min: 0,
+                                        max: 100000,
+                                        decimals: 0,
+                                        gaugeWidthScale: 0.6
+                                    });        
+                                };
+                                document.addEventListener("DOMContentLoaded", function(event) {
+                                    var data = Get_API_Water();
+                                    var g3 = new JustGage({
+                                        id: "g3",
+                                        title: "Sensus1 035",
+                                        value: data.meter2,
+                                        min: 0,
+                                        max: 100000,
+                                        decimals: 0,
+                                        gaugeWidthScale: 0.6
+                                    });
+                                    document.getElementById('m3_temp').innerHTML = data.temp2;
+                                    document.getElementById('m3_time').innerHTML = data.time2;
+                                    document.getElementById('m3_meter_table').innerHTML = data.meter2;
+                                    document.getElementById('m3_temp_table').innerHTML = data.temp2;
+                                    document.getElementById('m3_time_table').innerHTML = data.time2;
+                                    document.getElementById('g3_refresh').addEventListener('click', function() {
+                                        //g3.refresh(getRandomInt(-10, 100));
+                                        g3.refresh(callbackAPI3());
+                                    });                       
+                                });
+                            </script>
+                        </div>                       
+                    </div>
+                </div>   
+            </div>
+            <hr class="style-four">
+
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <div id="g4" class="gauge float-right"></div>
+                        </div>
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <h4>Details<small class="pull-right"> Statistic</small></h4>
+                            <table class="table table-condensed">
+                                <tbody>
+                                  <tr>
+                                    <td>Name:</td>
+                                    <td>Sensus1 024</td>
+                                    <td>Type Climate</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Temperature:</td>
+                                    <td id="m4_temp"></td>
+                                    <td>oC</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Time:</td>
+                                    <td id="m4_time"></td>
+                                    <td>date</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Note:</td>
+                                    <td>NaN</td>
+                                    <td>No Data Yet</td>
+                                   </tr> 
+                                </tbody>
+                            </table>
+                            
+                            <a href="#" id="g4_refresh" class="btn btn-default btn-sm pull-right">refresh</a>
+                            
+                            <script>
+                                function callbackAPI4() {
+                                    var data = Get_API_Water();
+                                    var g1 = new JustGage({
+                                        id: "g4",
+                                        title: "Decentlabs Atmos41",
+                                        value: data.meter3,
+                                        min: 0,
+                                        max: 100000,
+                                        decimals: 0,
+                                        gaugeWidthScale: 0.6
+                                    });        
+                                };
+                                document.addEventListener("DOMContentLoaded", function(event) {
+                                    var data = Get_API_Water();
+                                    var g4 = new JustGage({
+                                        id: "g4",
+                                        title: "Decentlabs Atmos41",
+                                        value: data.meter3,
+                                        min: 0,
+                                        max: 100000,
+                                        decimals: 0,
+                                        gaugeWidthScale: 0.6
+                                    });
+                                    document.getElementById('m4_temp').innerHTML = data.temp3;
+                                    document.getElementById('m4_time').innerHTML = data.time3;
+                                    document.getElementById('m4_meter_table').innerHTML = data.meter3;
+                                    document.getElementById('m4_temp_table').innerHTML = data.temp3;
+                                    document.getElementById('m4_time_table').innerHTML = data.time3;
+                                    document.getElementById('g4_refresh').addEventListener('click', function() {
+                                        //g4.refresh(getRandomInt(-10, 120));
+                                        g4.refresh(callbackAPI4());
+                                    });                       
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+
+            <hr class="style-four">
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <section class="content-header">
+                        <h1>
+                            IoT Sensors to Sensus - Water Meters
+                            <small>Short List</small>
+                        </h1>
+                    </section>
+                </div>
+            </div>
+
+            <hr class="style-four">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                              <th>SensorID</th>
+                              <th>Name</th>
+                              <th>Meter Reading</th>
+                              <th>Temperature</th>
+                              <th>Timestamp</th>
+                              <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="searchable">
+                            <tr>
+                              <td>70b3b514900b018c</td>
+                              <td>Sensus1 18c</td>
+                              <td id="m1_meter_table"></td>                 
+                              <td id="m1_temp_table"></td>
+                              <td id="m1_time_table"></td>
+                              <td><span class="label label-success">on</span></td>
+                            </tr>
+                            <tr>
+                              <td>70b3b514900b0024</td>
+                              <td>Sensus1 024</td>
+                              <td id="m2_meter_table"></td>
+                              <td id="m2_temp_table"></td>
+                              <td id="m2_time_table"></td>
+                              <td><span class="label label-success">on</span></td>
+                            </tr>
+                            <tr>
+                              <td>70b3b514900b0035</td>
+                              <td>Sensus1 035</td>
+                              <td id="m3_meter_table"></td>
+                              <td id="m3_temp_table"></td>
+                              <td id="m3_time_table"></td>
+                              <td><span class="label label-success">on</span></td>
+                            </tr>
+                            <tr>
+                              <td>70b3d57ba0001555</td>
+                              <td>Decentlabs Atmos41</td>
+                              <td id="m4_meter_table"></td>
+                              <td id="m4_temp_table"></td>
+                              <td id="m4_time_table"></td>
+                              <td><span class="label label-success">off</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+            <hr class="style-four">
+            <hr class="style-four">
+            <footer class="footer">    
+                  <p class="text-muted pull-left">Smart Water Level &copy 2021 &nbsp; Fredericton City</p>
+                  <p class="text-muted pull-right">Designed by <a href="">Maple Smart Control</a></p>
+            </footer>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    
+    <!-- jQuery -->
+    <script src="base/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="base/js/bootstrap.min.js"></script>
+    
+    <!-- SWITCH SECTION -->
+    <link href="base/css/switch/bootstrap-switch.css" rel="stylesheet">
+    <script src="base/js/switch/highlight.js"></script>
+    <script src="base/js/switch/bootstrap-switch.js"></script>
+    <script src="base/js/switch/main.js"></script>
+
+    <!-- GUAGE SECTION -->
+    <script src="base/js/guage/raphael-2.1.4.min.js"></script>
+    <script src="base/js/guage/justgage-1.1.0.min.js"></script>
+    <!-- Menu Toggle Script -->
+    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
+    <!-- Chart js library -->
+    <script src="base/js/chart/Chart.js"></script>
+    <!-- Slider -->
+    <script src="base/js/slider/freshslider.min.js"></script>
+    
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
+    <script>
+        $(document).ready(function () {
+            (function ($) {
+                $('#filter').keyup(function () {
+                    var rex = new RegExp($(this).val(), 'i');
+                    $('.searchable tr').hide();
+                    $('.searchable tr').filter(function () {
+                        return rex.test($(this).text());
+                    }).show();
+                })
+            }(jQuery));
+        });
+    </script>
+    <script>
+        var s2 = $("#unranged-value").freshslider({
+            step: 1,
+            value:50,
+            onchange:function(value){
+                console.log(value);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
